@@ -31,10 +31,15 @@
           {
                text-align: center;
           }
+          input:last-of-type:hover
+          {
+               color: aqua;
+               background-color: rgb(240, 129, 39);
+          }
      </style>
 </head>
 <body>
-     <marquee behavior="" direction="">Don't have Account? Register Here <a href="http://127.0.0.1:8000/register/">Register</a></marquee>
+     <marquee behavior="" direction="">Don't have Account? Register Here <a href="{% url 'register' %}">Register</a></marquee>
      <div class="div1">
           <form action="">
                <table>
