@@ -13,6 +13,3 @@ def login(request):
 
 def logout(request):
      return render(request, 'logout.html')
-
-def log(request):
-     return render(request, '')
