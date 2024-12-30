@@ -22,7 +22,7 @@ from app1.views import home,login,logout,register
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include("app1.urls")),
+    #path('',include("app1.urls")),
     path('',home,name='home'),
     path('login/',login,name='login'),
     path('logout/',logout,name='logout'),

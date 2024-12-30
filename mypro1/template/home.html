@@ -1,4 +1,4 @@
-{% load static %}
+<!-- {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,5 +10,256 @@
 <body>
      <h1>{{ data }}</h1>
      <a href="{% url 'login' %}">Home</a>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Details</title>
+    <style>
+        /* Internal CSS for styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        td {
+            background-color: #f9f9f9;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #e2e2e2;
+        }
+        .btn {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: center;
+            display: inline-block;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Student Details</h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Address</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in students %}
+                <tr>
+                    <td>{{ student.name }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.address }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="3">No students found</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <button class="btn" onclick="alert('Thank you for viewing the student details!')">Click Me</button>
+    </div>
+
+    <script>
+        // Basic JS to enhance the user experience
+        document.querySelector('.btn').addEventListener('click', function() {
+            alert('Thank you for viewing the student details!');
+        });
+    </script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Details</title>
+    <!-- Link to Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEJXxHkpJSneRxB+MFE9g5hElQf52aLzxKJzxzCkOq0RoD3/TmjPH0HEj7Qos" crossorigin="anonymous">
+    
+    <!-- Link to Google Material Icons for better UI -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <style>
+        body {
+            background: linear-gradient(to right, #00c6ff, #0072ff); /* Gradient background */
+            font-family: 'Roboto', sans-serif;
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .card-deck {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            background-color: #ffffff;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-header {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .card-body {
+            padding: 15px;
+            background-color: #f8f9fa;
+        }
+
+        .card-body p {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .card-footer {
+            padding: 10px;
+            background-color: #f1f1f1;
+            text-align: right;
+        }
+
+        .btn-custom {
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            padding: 10px 20px;
+            transition: background-color 0.3s ease;
+            border: none;
+        }
+
+        .btn-custom:hover {
+            background-color: #45a049;
+        }
+
+        .material-icons {
+            vertical-align: middle;
+            font-size: 18px;
+        }
+
+        /* Add responsive padding for smaller devices */
+        @media (max-width: 767px) {
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Student Details</h1>
+
+        <!-- Card Grid displaying each student -->
+        <div class="card-deck">
+            {% for student in students %}
+            <div class="card">
+                <div class="card-header">
+                    {{ student.name }}
+                </div>
+                <div class="card-body">
+                    <p><strong>Age:</strong> {{ student.age }}</p>
+                    <p><strong>Address:</strong> {{ student.address }}</p>
+                </div>
+                <div class="card-footer">
+                    <button class="btn-custom" onclick="showMessage('{{ student.name }}')">
+                        <span class="material-icons">info</span> More Info
+                    </button>
+                </div>
+            </div>
+            {% empty %}
+            <div class="card">
+                <div class="card-body text-center">
+                    <p>No students found</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+    <!-- Bootstrap 5 and custom JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-5o5kZtMct0AKFJvvcrsqf4tsjAKZ1wnXolq9pCCdPTFyt3s6S/Ed8+GLQHyyBgsP" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0w2L0HTU5eD7FzpZt9v3QipupUq+f56lm0WgnTy8d6fj4TLz" crossorigin="anonymous"></script>
+
+    <script>
+        // Custom JS function to show an alert with student name
+        function showMessage(name) {
+            alert("More details about " + name);
+        }
+    </script>
+
 </body>
 </html>

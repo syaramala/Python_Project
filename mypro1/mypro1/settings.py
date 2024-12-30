@@ -1,3 +1,5 @@
+import pymysql
+pymysql.install_as_MySQLdb()
 """
 Django settings for mypro1 project.
 
@@ -40,10 +42,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app1',
     'whitenoise',
+    'corsheaders',
 ]
+
+CORS_ALLOW_ALL_ORIGINS = True
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -81,8 +87,12 @@ WSGI_APPLICATION = 'mypro1.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',  # Tell Django to use MySQL
+        'NAME': 'railway',  # Database name
+        'USER': 'root',  # Database username
+        'PASSWORD': 'KrZZOQuvZmqKLLRNnzwYDSzwJvsnvvof',  # Database password
+        'HOST': 'autorack.proxy.rlwy.net',  # Database host (URL or IP)
+        'PORT': '38372',  # Database port
     }
 }
 

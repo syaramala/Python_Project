@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "mynetcrud/wsgi.py", //--> enter project name
+      "src": "mypro1/wsgi.py", 
       "use": "@vercel/python",
       "config": {
         "maxLambdaSize": "15mb",
@@ -20,7 +20,7 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "mynetcrud/wsgi.py"   //--> enter project name
+      "dest": "mypro1/wsgi.py" 
     }
   ],
   "outputDirectory": "static"
